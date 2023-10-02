@@ -2,7 +2,7 @@ const customDialogflow = require("../Models/custom_dialogflow");
 const BotExchangeBranch = require("../Models/BotExchangeBranch");
 const CustomExchangeResponse_V1 = require("../Models/CustomExchangeResponse_V1");
 const PromptDefinition = require("../Models/PromptDefinition");
-async function Automated_Text(req)
+async function AutomatedText(req)
 {
     let botExchangeResponse = CustomExchangeResponse_V1;
     botExchangeResponse.nextPromptBehaviors = null;
@@ -20,7 +20,8 @@ async function Automated_Text(req)
     prompts[0].base64EncodedG711ulawWithWavHeader = "";
     prompts[0].mediaSpecificObject = "";
     prompts[0].textToSpeech = "";
+    botExchangeResponse.nextPromptSequence.prompts = prompts; 
     console.log(botExchangeResponse)
     return botExchangeResponse
 }
-module.exports = { Automated_Text }
+module.exports = { AutomatedText }
